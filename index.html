@@ -28,8 +28,55 @@
   <button onclick="vote()">Vote</button>
 
   <h2>Results</h2>
-  <ul id="pollResults"></ul>
+  <ul id="pollResults">
+    <!-- Results will be dynamically updated here -->
+  </ul>
 
-  <script src="script.js"></script>
+  <script>
+    // Function to load data and initialize poll
+    async function loadData() {
+      try {
+        const response = await fetch('scores/poll1.json'); // Replace with your JSON file path
+        const data = await response.json();
+        initializePoll(data.options);
+      } catch (error) {
+        console.error('Error loading data:', error);
+      }
+    }
+
+    // Function to initialize the poll options
+    function initializePoll(options) {
+      const pollContainer = document.getElementById('pollContainer');
+      options.forEach(option => {
+        const optionDiv = document.createElement('div');
+        optionDiv.className = 'option';
+        
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.id = option.id;
+        input.name = 'poll1'; // Change poll1 to match your poll ID
+        input.value = option.id;
+        
+        const label = document.createElement('label');
+        label.setAttribute('for', option.id);
+        label.textContent = option.name;
+        
+        optionDiv.appendChild(input);
+        optionDiv.appendChild(label);
+        pollContainer.appendChild(optionDiv);
+      });
+    }
+
+    // Function to handle voting
+    function vote() {
+      const selectedOption = document.querySelector('input[name=poll1]:checked').value;
+      
+      // Simulate voting logic
+      console.log(`Voted for: ${selectedOption}`);
+    }
+
+    // Load data when the page loads
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
 </body>
 </html>

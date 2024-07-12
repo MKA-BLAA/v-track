@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polls Website</title>
+  <style>
+    /* Basic styling for layout */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .poll {
+      margin-bottom: 20px;
+    }
+    .option {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Polls Website</h1>
+
+  <div class="poll" id="pollContainer">
+    <!-- Options will be dynamically inserted here -->
+  </div>
+
+  <button onclick="vote()">Vote</button>
+
+  <h2>Results</h2>
+  <ul id="pollResults"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
